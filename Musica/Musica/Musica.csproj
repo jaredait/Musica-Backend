@@ -171,6 +171,10 @@
     <Compile Include="CANCION.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AlbumController.cs" />
+    <Compile Include="Controllers\ArtistaController.cs" />
+    <Compile Include="Controllers\CancionController.cs" />
+    <Compile Include="Controllers\GeneroController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="GENERO.cs">
@@ -194,6 +198,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\AlbumModelo.cs" />
+    <Compile Include="Models\ArtistaModelo.cs" />
+    <Compile Include="Models\CancionModelo.cs" />
+    <Compile Include="Models\GeneroModelo.cs" />
+    <Compile Include="Models\IAlbum.cs" />
+    <Compile Include="Models\IArtista.cs" />
+    <Compile Include="Models\ICancion.cs" />
+    <Compile Include="Models\IGenero.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -266,7 +278,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

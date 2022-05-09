@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MusicaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ALBUM">
+    <Key>
+      <PropertyRef Name="ALB_ID" />
+    </Key>
+    <Property Name="ALB_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ART_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ALB_NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ALB_FECHA_LANZAMIENTO" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ARTISTA" Relationship="Self.FK_ALBUM_RELATIONS_ARTISTA" FromRole="ALBUM" ToRole="ARTISTA" />
+    <NavigationProperty Name="CANCION" Relationship="Self.FK_CANCION_RELATIONS_ALBUM" FromRole="ALBUM" ToRole="CANCION" />
+  </EntityType>
+  <EntityType Name="ARTISTA">
+    <Key>
+      <PropertyRef Name="ART_ID" />
+    </Key>
+    <Property Name="ART_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ART_NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ART_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ART_FECHA_CREACION" Type="DateTime" Precision="3" />
+    <Property Name="ART_CANT_INTEGRANTES" Type="Int32" />
+    <NavigationProperty Name="ALBUM" Relationship="Self.FK_ALBUM_RELATIONS_ARTISTA" FromRole="ARTISTA" ToRole="ALBUM" />
+  </EntityType>
+  <EntityType Name="CANCION">
+    <Key>
+      <PropertyRef Name="CAN_ID" />
+    </Key>
+    <Property Name="CAN_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ALB_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="GEN_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CAN_NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CAN_DURACION" Type="Decimal" Precision="6" Scale="2" />
+    <NavigationProperty Name="ALBUM" Relationship="Self.FK_CANCION_RELATIONS_ALBUM" FromRole="CANCION" ToRole="ALBUM" />
+    <NavigationProperty Name="GENERO" Relationship="Self.FK_CANCION_RELATIONS_GENERO" FromRole="CANCION" ToRole="GENERO" />
+  </EntityType>
+  <EntityType Name="GENERO">
+    <Key>
+      <PropertyRef Name="GEN_ID" />
+    </Key>
+    <Property Name="GEN_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GEN_NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CANCION" Relationship="Self.FK_CANCION_RELATIONS_GENERO" FromRole="GENERO" ToRole="CANCION" />
+  </EntityType>
+  <Association Name="FK_ALBUM_RELATIONS_ARTISTA">
+    <End Role="ARTISTA" Type="Self.ARTISTA" Multiplicity="1" />
+    <End Role="ALBUM" Type="Self.ALBUM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ARTISTA">
+        <PropertyRef Name="ART_ID" />
+      </Principal>
+      <Dependent Role="ALBUM">
+        <PropertyRef Name="ART_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CANCION_RELATIONS_ALBUM">
+    <End Role="ALBUM" Type="Self.ALBUM" Multiplicity="0..1" />
+    <End Role="CANCION" Type="Self.CANCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ALBUM">
+        <PropertyRef Name="ALB_ID" />
+      </Principal>
+      <Dependent Role="CANCION">
+        <PropertyRef Name="ALB_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CANCION_RELATIONS_GENERO">
+    <End Role="GENERO" Type="Self.GENERO" Multiplicity="1" />
+    <End Role="CANCION" Type="Self.CANCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GENERO">
+        <PropertyRef Name="GEN_ID" />
+      </Principal>
+      <Dependent Role="CANCION">
+        <PropertyRef Name="GEN_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MusicaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ALBUM" EntityType="Self.ALBUM" />
+    <EntitySet Name="ARTISTA" EntityType="Self.ARTISTA" />
+    <EntitySet Name="CANCION" EntityType="Self.CANCION" />
+    <EntitySet Name="GENERO" EntityType="Self.GENERO" />
+    <AssociationSet Name="FK_ALBUM_RELATIONS_ARTISTA" Association="Self.FK_ALBUM_RELATIONS_ARTISTA">
+      <End Role="ARTISTA" EntitySet="ARTISTA" />
+      <End Role="ALBUM" EntitySet="ALBUM" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CANCION_RELATIONS_ALBUM" Association="Self.FK_CANCION_RELATIONS_ALBUM">
+      <End Role="ALBUM" EntitySet="ALBUM" />
+      <End Role="CANCION" EntitySet="CANCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CANCION_RELATIONS_GENERO" Association="Self.FK_CANCION_RELATIONS_GENERO">
+      <End Role="GENERO" EntitySet="GENERO" />
+      <End Role="CANCION" EntitySet="CANCION" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

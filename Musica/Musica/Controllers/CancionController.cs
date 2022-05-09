@@ -6,9 +6,11 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Musica.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CancionController : ApiController
     {
         ICancion _cancionModelo;

@@ -11,19 +11,10 @@ namespace Musica
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class GENERO
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public GENERO()
-        {
-            this.CANCION = new HashSet<CANCION>();
-        }
-    
         public string GEN_ID { get; set; }
         public string GEN_NOMBRE { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CANCION> CANCION { get; set; }
     }
 }

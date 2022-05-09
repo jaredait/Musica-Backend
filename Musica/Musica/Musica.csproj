@@ -206,6 +206,10 @@
     <Compile Include="Models\IArtista.cs" />
     <Compile Include="Models\ICancion.cs" />
     <Compile Include="Models\IGenero.cs" />
+    <Compile Include="PartialClasses\ALBUM.cs" />
+    <Compile Include="PartialClasses\ARTISTA.cs" />
+    <Compile Include="PartialClasses\CANCION.cs" />
+    <Compile Include="PartialClasses\GENERO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

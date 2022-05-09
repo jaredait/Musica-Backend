@@ -11,7 +11,7 @@ namespace Musica
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class CANCION
     {
         public string CAN_ID { get; set; }
@@ -19,8 +19,5 @@ namespace Musica
         public string GEN_ID { get; set; }
         public string CAN_NOMBRE { get; set; }
         public Nullable<decimal> CAN_DURACION { get; set; }
-    
-        public virtual ALBUM ALBUM { get; set; }
-        public virtual GENERO GENERO { get; set; }
     }
 }

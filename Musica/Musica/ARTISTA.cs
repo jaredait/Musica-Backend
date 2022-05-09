@@ -11,22 +11,13 @@ namespace Musica
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class ARTISTA
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ARTISTA()
-        {
-            this.ALBUM = new HashSet<ALBUM>();
-        }
-    
         public string ART_ID { get; set; }
         public string ART_NOMBRE { get; set; }
         public string ART_EMAIL { get; set; }
         public Nullable<System.DateTime> ART_FECHA_CREACION { get; set; }
         public Nullable<int> ART_CANT_INTEGRANTES { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ALBUM> ALBUM { get; set; }
     }
 }

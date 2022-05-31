@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MusicaModelStoreContainer" CdmEntityContainer="MusicaEntities">
+    <EntitySetMapping Name="ALBUM">
+      <EntityTypeMapping TypeName="MusicaModel.ALBUM">
+        <MappingFragment StoreEntitySet="ALBUM">
+          <ScalarProperty Name="ALB_ID" ColumnName="ALB_ID" />
+          <ScalarProperty Name="ART_ID" ColumnName="ART_ID" />
+          <ScalarProperty Name="ALB_NOMBRE" ColumnName="ALB_NOMBRE" />
+          <ScalarProperty Name="ALB_FECHA_LANZAMIENTO" ColumnName="ALB_FECHA_LANZAMIENTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ARTISTA">
+      <EntityTypeMapping TypeName="MusicaModel.ARTISTA">
+        <MappingFragment StoreEntitySet="ARTISTA">
+          <ScalarProperty Name="ART_ID" ColumnName="ART_ID" />
+          <ScalarProperty Name="ART_NOMBRE" ColumnName="ART_NOMBRE" />
+          <ScalarProperty Name="ART_EMAIL" ColumnName="ART_EMAIL" />
+          <ScalarProperty Name="ART_FECHA_CREACION" ColumnName="ART_FECHA_CREACION" />
+          <ScalarProperty Name="ART_CANT_INTEGRANTES" ColumnName="ART_CANT_INTEGRANTES" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CANCION">
+      <EntityTypeMapping TypeName="MusicaModel.CANCION">
+        <MappingFragment StoreEntitySet="CANCION">
+          <ScalarProperty Name="CAN_ID" ColumnName="CAN_ID" />
+          <ScalarProperty Name="ALB_ID" ColumnName="ALB_ID" />
+          <ScalarProperty Name="GEN_ID" ColumnName="GEN_ID" />
+          <ScalarProperty Name="CAN_NOMBRE" ColumnName="CAN_NOMBRE" />
+          <ScalarProperty Name="CAN_DURACION" ColumnName="CAN_DURACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GENERO">
+      <EntityTypeMapping TypeName="MusicaModel.GENERO">
+        <MappingFragment StoreEntitySet="GENERO">
+          <ScalarProperty Name="GEN_ID" ColumnName="GEN_ID" />
+          <ScalarProperty Name="GEN_NOMBRE" ColumnName="GEN_NOMBRE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

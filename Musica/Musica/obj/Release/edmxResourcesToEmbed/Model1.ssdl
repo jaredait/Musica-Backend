@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MusicaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ALBUM">
+    <Key>
+      <PropertyRef Name="ALB_ID" />
+    </Key>
+    <Property Name="ALB_ID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ART_ID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ALB_NOMBRE" Type="varchar" MaxLength="50" />
+    <Property Name="ALB_FECHA_LANZAMIENTO" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ARTISTA">
+    <Key>
+      <PropertyRef Name="ART_ID" />
+    </Key>
+    <Property Name="ART_ID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ART_NOMBRE" Type="varchar" MaxLength="100" />
+    <Property Name="ART_EMAIL" Type="varchar" MaxLength="100" />
+    <Property Name="ART_FECHA_CREACION" Type="datetime" />
+    <Property Name="ART_CANT_INTEGRANTES" Type="int" />
+  </EntityType>
+  <EntityType Name="CANCION">
+    <Key>
+      <PropertyRef Name="CAN_ID" />
+    </Key>
+    <Property Name="CAN_ID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ALB_ID" Type="varchar" MaxLength="10" />
+    <Property Name="GEN_ID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="CAN_NOMBRE" Type="varchar" MaxLength="100" />
+    <Property Name="CAN_DURACION" Type="decimal" Precision="6" Scale="2" />
+  </EntityType>
+  <EntityType Name="GENERO">
+    <Key>
+      <PropertyRef Name="GEN_ID" />
+    </Key>
+    <Property Name="GEN_ID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="GEN_NOMBRE" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_ALBUM_RELATIONS_ARTISTA">
+    <End Role="ARTISTA" Type="Self.ARTISTA" Multiplicity="1" />
+    <End Role="ALBUM" Type="Self.ALBUM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ARTISTA">
+        <PropertyRef Name="ART_ID" />
+      </Principal>
+      <Dependent Role="ALBUM">
+        <PropertyRef Name="ART_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CANCION_RELATIONS_ALBUM">
+    <End Role="ALBUM" Type="Self.ALBUM" Multiplicity="0..1" />
+    <End Role="CANCION" Type="Self.CANCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ALBUM">
+        <PropertyRef Name="ALB_ID" />
+      </Principal>
+      <Dependent Role="CANCION">
+        <PropertyRef Name="ALB_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CANCION_RELATIONS_GENERO">
+    <End Role="GENERO" Type="Self.GENERO" Multiplicity="1" />
+    <End Role="CANCION" Type="Self.CANCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GENERO">
+        <PropertyRef Name="GEN_ID" />
+      </Principal>
+      <Dependent Role="CANCION">
+        <PropertyRef Name="GEN_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MusicaModelStoreContainer">
+    <EntitySet Name="ALBUM" EntityType="Self.ALBUM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ARTISTA" EntityType="Self.ARTISTA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CANCION" EntityType="Self.CANCION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GENERO" EntityType="Self.GENERO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ALBUM_RELATIONS_ARTISTA" Association="Self.FK_ALBUM_RELATIONS_ARTISTA">
+      <End Role="ARTISTA" EntitySet="ARTISTA" />
+      <End Role="ALBUM" EntitySet="ALBUM" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CANCION_RELATIONS_ALBUM" Association="Self.FK_CANCION_RELATIONS_ALBUM">
+      <End Role="ALBUM" EntitySet="ALBUM" />
+      <End Role="CANCION" EntitySet="CANCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CANCION_RELATIONS_GENERO" Association="Self.FK_CANCION_RELATIONS_GENERO">
+      <End Role="GENERO" EntitySet="GENERO" />
+      <End Role="CANCION" EntitySet="CANCION" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

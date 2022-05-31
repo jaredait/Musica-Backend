@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="MusicaModel.ALBUM" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicaModel.ARTISTA" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicaModel.CANCION" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicaModel.GENERO" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicaModel.GENERO" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
         <AssociationConnector Association="MusicaModel.FK_ALBUM_RELATIONS_ARTISTA" ManuallyRouted="false" />
         <AssociationConnector Association="MusicaModel.FK_CANCION_RELATIONS_ALBUM" ManuallyRouted="false" />
         <AssociationConnector Association="MusicaModel.FK_CANCION_RELATIONS_GENERO" ManuallyRouted="false" />

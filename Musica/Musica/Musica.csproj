@@ -178,11 +178,17 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AlbumController.cs" />
+    <Compile Include="Controllers\AlbumDTOController.cs" />
     <Compile Include="Controllers\ArtistaController.cs" />
     <Compile Include="Controllers\CancionController.cs" />
+    <Compile Include="Controllers\CancionDTOController.cs" />
     <Compile Include="Controllers\GeneroController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\CancionDTOModelo.cs" />
+    <Compile Include="Models\ICancionDTO.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="DTO\AlbumDTO.cs" />
+    <Compile Include="DTO\CancionDTO.cs" />
     <Compile Include="GENERO.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -204,6 +210,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\AlbumDTOModelo.cs" />
+    <Compile Include="Models\IAlbumDTO.cs" />
     <Compile Include="Models\AlbumModelo.cs" />
     <Compile Include="Models\ArtistaModelo.cs" />
     <Compile Include="Models\CancionModelo.cs" />

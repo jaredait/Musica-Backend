@@ -60,15 +60,15 @@ namespace Musica.Controllers
         }
 
         // PUT: api/Genero/5
-        public HttpResponseMessage Put(string id, [FromBody] GENERO artistaActualizado)
+        public HttpResponseMessage Put([FromBody] GENERO artistaActualizado)
         {
             try
             {
-                GENERO generoTemp = _generoModelo.updateGenero(id, artistaActualizado);
+                GENERO generoTemp = _generoModelo.updateGenero(artistaActualizado.GEN_ID, artistaActualizado);
 
                 if (generoTemp == null)
                 {
-                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, $"El género con id = {id} no existe");
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, $"El género con id = {artistaActualizado.GEN_ID} no existe");
                 }
                 return Request.CreateResponse(HttpStatusCode.OK, generoTemp);
             }

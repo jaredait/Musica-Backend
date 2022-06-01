@@ -62,15 +62,16 @@ namespace Musica.Controllers
         }
 
         // PUT: api/Album/5
-        public HttpResponseMessage Put(string id, [FromBody] ALBUM albumActualizado)
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public HttpResponseMessage Put([FromBody] ALBUM albumActualizado)
         {
             try
             {
-                ALBUM albumTemp = _albumModelo.updateAlbum(id, albumActualizado);
+                ALBUM albumTemp = _albumModelo.updateAlbum(albumActualizado.ALB_ID, albumActualizado);
 
                 if (albumTemp == null)
                 {
-                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, $"El album con id = {id} no existe");
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, $"El album con id = {albumActualizado.ALB_ID} no existe");
                 }
                 return Request.CreateResponse(HttpStatusCode.OK, albumTemp);
             }
@@ -81,6 +82,7 @@ namespace Musica.Controllers
         }
 
         // DELETE: api/Album/5
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public HttpResponseMessage Delete(string id)
         {
             try

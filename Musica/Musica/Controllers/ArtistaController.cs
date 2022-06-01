@@ -61,15 +61,15 @@ namespace Musica.Controllers
         }
 
         // PUT: api/Artista/5
-        public HttpResponseMessage Put(string id, [FromBody]ARTISTA artistaActualizado)
+        public HttpResponseMessage Put([FromBody]ARTISTA artistaActualizado)
         {
             try
             {
-                ARTISTA cancionTemp = _artistaModelo.updateArtista(id, artistaActualizado);
+                ARTISTA cancionTemp = _artistaModelo.updateArtista(artistaActualizado.ART_ID, artistaActualizado);
 
                 if (cancionTemp == null)
                 {
-                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, $"El artista con id = {id} no existe");
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, $"El artista con id = {artistaActualizado.ART_ID} no existe");
                 }
                 return Request.CreateResponse(HttpStatusCode.OK, cancionTemp);
             }

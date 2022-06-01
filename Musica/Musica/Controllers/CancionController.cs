@@ -58,15 +58,15 @@ namespace Musica.Controllers
 
         }
 
-        public HttpResponseMessage Put(string id, [FromBody] CANCION cancionActualizada)
+        public HttpResponseMessage Put([FromBody] CANCION cancionActualizada)
         {
             try
             {
-                CANCION cancionTemp = _cancionModelo.updateCancion(id, cancionActualizada);
+                CANCION cancionTemp = _cancionModelo.updateCancion(cancionActualizada.CAN_ID, cancionActualizada);
 
                 if (cancionTemp == null)
                 {
-                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, $"La canción con id = {id} no existe");
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, $"La canción con id = {cancionActualizada.CAN_ID} no existe");
                 }
                 return Request.CreateResponse(HttpStatusCode.OK, cancionTemp);
             }
